@@ -7,11 +7,16 @@ public class Zombie : MonoBehaviour
     public float acceleration = 10f;
 
     Transform head;
+    Transform root;
+    NavMeshAgent ai;
 
     void Start()
     {
-        StartCoroutine("Walk");
+        root = transform.Find("Root");
         head = transform.Find("Root/Head");
+        ai = GetComponent<NavMeshAgent>();
+        ai.SetDestination(Vector3.zero);
+        StartCoroutine("Walk");
     }
 
     IEnumerator Walk()
@@ -21,7 +26,7 @@ public class Zombie : MonoBehaviour
             float velocity = 0f;
             for (float rotate = -tilt; rotate < tilt; rotate += velocity * Time.deltaTime)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, rotate);
+                root.localRotation = Quaternion.Euler(0f, 0f, rotate);
                 yield return null;
                 velocity += acceleration * Time.deltaTime;
             }
@@ -31,7 +36,7 @@ public class Zombie : MonoBehaviour
             velocity = 0f;
             for (float rotate = tilt; rotate > -tilt; rotate -= velocity * Time.deltaTime)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, rotate);
+                root.localRotation = Quaternion.Euler(0f, 0f, rotate);
                 yield return null;
                 velocity += acceleration * Time.deltaTime;
             }
