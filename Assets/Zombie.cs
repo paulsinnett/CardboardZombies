@@ -5,6 +5,7 @@ public class Zombie : MonoBehaviour
 {
     public float tilt = 10f;
     public float acceleration = 10f;
+    public float range = 2.5f;
 
     Transform head;
     Transform root;
@@ -17,6 +18,14 @@ public class Zombie : MonoBehaviour
         ai = GetComponent<NavMeshAgent>();
         ai.SetDestination(Vector3.zero);
         StartCoroutine("Walk");
+    }
+
+    void Update()
+    {
+        if (Vector3.Distance(transform.position, Vector3.zero) < range)
+        {
+            Camera.main.SendMessage("ShowGameOver");
+        }
     }
 
     IEnumerator Walk()
