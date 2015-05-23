@@ -15,6 +15,7 @@ public class GameOver : MonoBehaviour
 
     void Restart()
     {
+        Time.timeScale = 1f;
         Application.LoadLevel(0);
     }
 }
