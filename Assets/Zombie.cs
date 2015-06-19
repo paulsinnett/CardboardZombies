@@ -8,6 +8,7 @@ public class Zombie : MonoBehaviour
     public float range = 2.5f;
 
     public AudioClip[] steps;
+    public AudioClip[] moans;
 
     Transform head;
     Transform root;
@@ -22,6 +23,7 @@ public class Zombie : MonoBehaviour
         ai.SetDestination(Vector3.zero);
         source = GetComponent<AudioSource>();
         StartCoroutine("Walk");
+        StartCoroutine("Moan");
     }
 
     void Update()
@@ -34,8 +36,16 @@ public class Zombie : MonoBehaviour
 
     void Footstep()
     {
-        source.clip = steps[Random.Range(0, steps.Length)];
-        source.Play();
+        source.PlayOneShot(steps[Random.Range(0, steps.Length)]);
+    }
+
+    IEnumerator Moan()
+    {
+        for (;;)
+        {
+            yield return new WaitForSeconds(Random.Range(1f, 5f));
+            source.PlayOneShot(moans[Random.Range(0, moans.Length)]);
+        }
     }
 
     IEnumerator Walk()

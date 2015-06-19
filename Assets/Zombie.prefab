@@ -1004,6 +1004,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f188fa8e58c6b1f46bf1f1d2d7d947cf, type: 3}
   - {fileID: 8300000, guid: a27cee22db5f5d548849ee098a13f8db, type: 3}
   - {fileID: 8300000, guid: 2e16ca46889f20b439061bd2242b8f50, type: 3}
+  moans:
+  - {fileID: 8300000, guid: 22c01559b22982041be8747073a452a4, type: 3}
+  - {fileID: 8300000, guid: b4d7392e8ecd27e4ebb96b266449c6c5, type: 3}
+  - {fileID: 8300000, guid: b8fffc88d92c9bd43962e36af84b2cac, type: 3}
+  - {fileID: 8300000, guid: aeae04a8d16ff9341a185d4ea7e03a4a, type: 3}
 --- !u!195 &19581534
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -1034,6 +1039,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: steps.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moans.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
