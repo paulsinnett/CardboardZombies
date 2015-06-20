@@ -1,3 +1,5 @@
 Sound effects sources:
 Footsteps http://freesound.org/people/Jake%20Williams/sounds/18169/
 Moans http://freesound.org/people/kathol/sounds/58626/
+Shot http://freesound.org/people/Pullover%20aus%20Milch/sounds/57363/
+Fall http://freesound.org/people/Timbre/sounds/100346/

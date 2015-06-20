@@ -7,11 +7,13 @@ public class Target : MonoBehaviour
     public float shotPower = 100f;
 
     float timer = 0f;
-    Collider currentTarget;
+    Transform currentTarget;
+    AudioSource source;
 
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -20,13 +22,13 @@ public class Target : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
         {
-            if (hitInfo.collider == currentTarget)
+            if (hitInfo.collider.transform.root == currentTarget)
             {
                 timer += Time.deltaTime;
             }
-            else
+            else if (hitInfo.collider.CompareTag("Zombie"))
             {
-                currentTarget = hitInfo.collider;
+                currentTarget = hitInfo.collider.transform.root;
                 timer = 0f;
             }
 
@@ -35,6 +37,7 @@ public class Target : MonoBehaviour
                 Rigidbody shot = Instantiate(shotPrefab, transform.position, transform.rotation) as Rigidbody;
                 shot.AddForce(transform.forward * shotPower, ForceMode.Impulse);
                 timer = 0f;
+                source.Play();
             }
         }
     }
