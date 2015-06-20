@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombie: {fileID: 11470728, guid: 2052d4118dbe02448a55fdd6de8adabb, type: 2}
   faces:
-  - {fileID: 2800000, guid: 396046a0cce36a74b9bc336d72937ca6, type: 3}
+  - {fileID: 2800000, guid: 47d614919c2c65744b63e3eee01042a8, type: 3}
   distance: 50
 --- !u!1 &56998189 stripped
 GameObject:
