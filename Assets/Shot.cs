@@ -8,6 +8,7 @@ public class Shot : MonoBehaviour
         if (collision.collider.CompareTag("Zombie"))
         {
             collision.collider.transform.root.SendMessage("Hit");
+            Score.score++;
         }
 
         Destroy(gameObject, 5f);

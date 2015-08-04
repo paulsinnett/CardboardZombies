@@ -9,15 +9,16 @@ public class Horde : MonoBehaviour
 
     void Start()
     {
+        Score.score = 0;
         StartCoroutine(horde());
     }
 
     IEnumerator horde()
     {
-        for (;;)
+        int timeToNext = 10;
+        int zombies = 60;
+        while (zombies > 0)
         {
-            float timeToNext = 10f;
-
             float angle = Random.Range(-Mathf.PI, Mathf.PI);
             Vector3 position = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle)) * distance;
 
@@ -25,6 +26,15 @@ public class Horde : MonoBehaviour
             instance.BroadcastMessage("SetFace", faces[Random.Range(0, faces.Length)]);
 
             yield return new WaitForSeconds(timeToNext);
+
+            if (timeToNext > 1)
+            {
+                timeToNext--;
+            }
+
+            zombies--;
         }
+
+        Camera.main.SendMessage("ShowGameOver");
     }
 }
